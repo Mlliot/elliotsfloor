@@ -1,0 +1,57 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta http-equiv="refresh" content="60; URL=missed.html">
+   <meta name="GENERATOR" content="Mozilla/4.61 (Macintosh; I; PPC) [Netscape]">
+   <title>Kill that cat </title>
+<script language="javascript">
+var intervalShake, intervalHowl;
+var wolfhowl = new Audio("wolfhowl.mp3");
+function startShake( ) {	
+	howl();
+	intervalShake = setInterval("shake()", 30);
+	intervalHowl = setInterval("howl()", 5000);
+}
+function shake() {
+	var  x = Math.round(10*Math.random());
+	var y = Math.round(10*Math.random());
+	document.body.style.backgroundPosition = "top "+y+"% left "+x+"%";
+	document.getElementById("frmKill").style.top = (50-y)+"%";
+	document.getElementById("frmKill").style.left = (50-x)+"%";
+}
+function howl() {
+	wolfhowl.play();
+}
+function stopInterval() {
+	clearInterval(intervalShake);
+	clearInterval(intervalHowl);
+}
+window.onbeforeunload = function() {
+	stopInterval();
+}
+</script>
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+	background-color:#C0C0C0;
+	background:url(teeth.jpg) no-repeat;
+	background-position:top left;
+	background-size:140% auto;
+	color:#FFF;
+	height:auto
+}
+#frmKill {
+	position:absolute;
+	top:50%;
+	left:50%;
+}
+</style>
+</head>
+<body onLoad="startShake()">
+<form id="frmKill" METHOD="GET" ACTION="kill.html" onSubmit="stopInterval()">
+	<input TYPE="submit" VALUE="K I L L   T H A T  C A T" />
+</form>
+</body>
+</html>
